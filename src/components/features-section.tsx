@@ -1,85 +1,79 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import Icon from "@/components/ui/icon"
 
 const features = [
   {
-    title: "Адаптивная нейрообработка",
-    description: "Самооптимизирующиеся алгоритмы, которые обучаются на нейронных паттернах и улучшают интерпретацию сигналов.",
-    icon: "brain",
-    badge: "ИИ",
+    icon: "Briefcase",
+    title: "Типы работ",
+    description: "От курьера и промоутера до фриланса и репетиторства — собрали все подходящие варианты для школьников.",
+    color: "text-green-400",
+    bg: "bg-green-500/10 border-green-500/20",
   },
   {
-    title: "Медицинская защита",
-    description: "Шифрование по стандартам FDA со сквозной защитой конфиденциальных нейронных данных.",
-    icon: "lock",
-    badge: "Сертификат",
+    icon: "Scale",
+    title: "Трудовое законодательство",
+    description: "Что говорит закон о работе несовершеннолетних: возраст, рабочие часы, права и обязанности.",
+    color: "text-yellow-400",
+    bg: "bg-yellow-500/10 border-yellow-500/20",
   },
   {
-    title: "Интуитивное управление",
-    description: "Естественная трансляция мыслей в действия с откликом менее миллисекунды и точностью 99,7%.",
-    icon: "globe",
-    badge: "Точность",
+    icon: "Lightbulb",
+    title: "Практические советы",
+    description: "Как совмещать работу с учёбой, составить резюме и пройти первое собеседование.",
+    color: "text-blue-400",
+    bg: "bg-blue-500/10 border-blue-500/20",
   },
   {
-    title: "Предиктивная калибровка",
-    description: "ML-модели, которые предугадывают намерения пользователя и оптимизируют нейронные пути.",
-    icon: "zap",
-    badge: "Умный",
+    icon: "Search",
+    title: "Актуальные вакансии",
+    description: "Подборка реальных вакансий, которые берут школьников без опыта работы.",
+    color: "text-purple-400",
+    bg: "bg-purple-500/10 border-purple-500/20",
   },
   {
-    title: "Биометрическая интеграция",
-    description: "Бесшовная синхронизация с мониторингом жизненных показателей для контроля здоровья.",
-    icon: "link",
-    badge: "Связь",
+    icon: "Shield",
+    title: "Безопасность",
+    description: "Как не попасть на мошенников и распознать нелегальные предложения о работе.",
+    color: "text-red-400",
+    bg: "bg-red-500/10 border-red-500/20",
   },
   {
-    title: "Поддержка XR",
-    description: "Нативная совместимость с AR/VR-средами для терапевтических и рабочих приложений.",
-    icon: "target",
-    badge: "XR Ready",
+    icon: "TrendingUp",
+    title: "Финансовая грамотность",
+    description: "Первый заработок — первые уроки. Учим правильно тратить, копить и планировать бюджет.",
+    color: "text-orange-400",
+    bg: "bg-orange-500/10 border-orange-500/20",
   },
 ]
 
 export function FeaturesSection() {
   return (
-    <section className="py-24 px-6 bg-background">
+    <section id="types" className="bg-black py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4 font-sans">Возможности нового поколения</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Почувствуйте будущее с технологиями, которые переопределяют возможное
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 text-sm font-geist mb-6">
+            <Icon name="Star" size={14} />
+            Всё в одном месте
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold font-orbitron text-white mb-4">
+            Твой путь к <span className="text-green-400">первому заработку</span>
+          </h2>
+          <p className="text-gray-400 font-geist text-lg max-w-2xl mx-auto">
+            Справочник собрал всё, что нужно знать подростку о законном заработке — от поиска работы до первой зарплаты.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <Card
-              key={index}
-              className="glow-border hover:shadow-lg transition-all duration-300 slide-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((f, i) => (
+            <div
+              key={i}
+              className={`rounded-2xl border p-6 ${f.bg} backdrop-blur-sm hover:scale-[1.02] transition-transform duration-300 cursor-default`}
             >
-              <CardHeader>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-3xl">
-                    {feature.icon === "brain" && "&#129504;"}
-                    {feature.icon === "lock" && "&#128274;"}
-                    {feature.icon === "globe" && "&#127760;"}
-                    {feature.icon === "zap" && "&#9889;"}
-                    {feature.icon === "link" && "&#128279;"}
-                    {feature.icon === "target" && "&#127919;"}
-                  </span>
-                  <Badge variant="secondary" className="bg-accent text-accent-foreground">
-                    {feature.badge}
-                  </Badge>
-                </div>
-                <CardTitle className="text-xl font-bold text-card-foreground">{feature.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
+              <div className={`w-12 h-12 rounded-xl bg-black/40 flex items-center justify-center mb-4`}>
+                <Icon name={f.icon} size={24} className={f.color} fallback="Star" />
+              </div>
+              <h3 className="text-white font-bold font-orbitron text-lg mb-2">{f.title}</h3>
+              <p className="text-gray-400 font-geist text-sm leading-relaxed">{f.description}</p>
+            </div>
           ))}
         </div>
       </div>
